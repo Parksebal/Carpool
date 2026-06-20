@@ -7,19 +7,24 @@ import CreateProfilePage from "./pages/CreateProfilePage";
 import StudentIdUploadPage from "./pages/StudentIdUploadPage";
 import VerificationPendingPage from "./pages/VerificationPendingPage";
 import DashboardPage from "./pages/DashboardPage";
+
 import DriverVerifyPage from "./pages/DriverVerifyPage";
 import VehiclePage from "./pages/VehiclePage";
+
+import PostRidePage from "./pages/PostRidePage";
+import SearchRidesPage from "./pages/SearchRidesPage";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
     <Routes>
+      {/* Public pages */}
       <Route path="/" element={<LandingPage />} />
-
       <Route path="/signup" element={<SignupPage />} />
-
       <Route path="/login" element={<LoginPage />} />
 
+      {/* Student onboarding */}
       <Route
         path="/onboarding/profile"
         element={
@@ -47,6 +52,7 @@ export default function App() {
         }
       />
 
+      {/* Main dashboard */}
       <Route
         path="/dashboard"
         element={
@@ -56,6 +62,7 @@ export default function App() {
         }
       />
 
+      {/* Driver flow */}
       <Route
         path="/driver/verify"
         element={
@@ -70,6 +77,25 @@ export default function App() {
         element={
           <ProtectedRoute>
             <VehiclePage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/driver/post"
+        element={
+          <ProtectedRoute>
+            <PostRidePage />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Rider flow */}
+      <Route
+        path="/rider/search"
+        element={
+          <ProtectedRoute>
+            <SearchRidesPage />
           </ProtectedRoute>
         }
       />
