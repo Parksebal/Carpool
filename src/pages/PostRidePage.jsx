@@ -61,18 +61,28 @@ export default function PostRidePage() {
       return;
     }
 
-    const { error: rideError } = await supabase.from("rides").insert({
-      driver_id: user.id,
-      vehicle_id: vehicleId,
-      origin_label: origin,
-      destination_label: destination,
-      departure_time: departureTime,
-      seats_total: Number(seatsAvailable),
-      seats_remaining: Number(seatsAvailable),
-      max_detour_minutes: Number(maxDetourMinutes),
-      estimated_price: estimatedPrice ? Number(estimatedPrice) : null,
-      status: "posted",
-    });
+    const selectedVehicle = vehicles.find((vehicle) => vehicle.id === vehicleId);
+
+if (!selectedVehicle) {
+  setError("Please select a vehicle.");
+  return;
+}
+
+const { error: rideError } = await supabase.from("rides").insert({
+  driver_id: user.id,
+  vehicle_id: vehicleId,
+  origin_label: origin,
+  destination_label: destination,
+  departure_time: departureTime,
+  seats_total: Number(seatsAvailable),
+  seats_remaining: Number(seatsAvailable),
+  max_detour_minutes: Number(maxDetourMinutes),
+  estimated_price: estimatedPrice ? Number(estimatedPrice) : null,
+  vehicle_make: selectedVehicle.make,
+  vehicle_model: selectedVehicle.model,
+  vehicle_color: selectedVehicle.color,
+  status: "posted",
+});
 
     if (rideError) {
       setError(rideError.message);

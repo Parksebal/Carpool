@@ -65,6 +65,8 @@ export default function DashboardPage() {
       <div style={{ display: "grid", gap: "16px", marginTop: "32px" }}>
         <Link to="/rider/search">Find a ride</Link>
         <Link to="/driver/verify">Become a driver</Link>
+        <Link to="/rider/search">Find a ride</Link>
+        <Link to="/driver/post">Post a ride</Link>
         <Link to="/my-rides">My rides</Link>
       </div>
     </main>

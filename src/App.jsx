@@ -16,6 +16,8 @@ import SearchRidesPage from "./pages/SearchRidesPage";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
+// import RequestSeatPage from "./pages/RequestSeatPage";
+
 export default function App() {
   return (
     <Routes>
@@ -99,6 +101,15 @@ export default function App() {
           </ProtectedRoute>
         }
       />
+
+      {/* <Route
+        path="/rides/:rideId/request"
+        element={
+          <ProtectedRoute>
+            <RequestSeatPage />
+          </ProtectedRoute>
+        }
+      /> */}
     </Routes>
   );
 }
